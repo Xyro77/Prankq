@@ -1,22 +1,31 @@
 <!DOCTYPE html>
 <html>
-<head><title>Spot 5 Differences</title></head>
-<body style="margin:0; background:#111; text-align:center; color:white; font-family:sans-serif;">
-  <h2>Level 1: Find 5 differences between these images</h2>
-  <p>Concentrate... look closely at the eyes...</p>
-  <img src="https://i.imgur.com/8QfYk1a.jpeg" width="90%" style="max-width:500px;">
+<head>
+  <title>Spot 5 Differences</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="margin:0; background:#111; text-align:center; color:white; font-family:sans-serif; padding:20px;">
+  <h2>Level 1: Find 5 differences</h2>
+  <p>Tap the image to start. Look closely at the eyes...</p>
+  <img id="gameImg" src="https://picsum.photos/500/400" width="90%" style="max-width:500px; cursor:pointer; border:2px solid #333;">
   
   <audio id="scream" src="https://www.myinstants.com/media/sounds/female-scream.mp3"></audio>
   
   <div id="jumpscare" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:black; z-index:999;">
-    <img src="https://i.imgur.com/9zXQZ7k.png" style="width:100%; height:100%; object-fit:cover;">
+    <img src="https://i.ibb.co/7j9kZ1m/scary-face.jpg" style="width:100%; height:100%; object-fit:cover;">
   </div>
 
   <script>
-    setTimeout(() => {
-      document.getElementById('jumpscare').style.display = 'block';
-      document.getElementById('scream').play();
-    }, 8000); // 8 sec kazhinju jumpscare varum
+    document.getElementById('gameImg').addEventListener('click', function() {
+      document.getElementById('scream').play().then(() => {
+        document.getElementById('scream').pause();
+        document.getElementById('scream').currentTime = 0;
+      });
+      setTimeout(() => {
+        document.getElementById('jumpscare').style.display = 'block';
+        document.getElementById('scream').play();
+      }, 8000);
+    });
   </script>
 </body>
 </html>
