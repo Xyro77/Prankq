@@ -14,8 +14,9 @@
     .game-img {
       width: 48%;
       max-width: 450px;
-      cursor: pointer;
       border: 2px solid #333;
+      object-fit: cover;
+      height: 300px;
     }
     .credit {
       font-size: 14px;
@@ -26,35 +27,30 @@
 </head>
 <body style="margin:0; background:#111; text-align:center; color:white; font-family:sans-serif; padding:20px 10px;">
   <h2>Level 1: Find 5 differences</h2>
-  <p>Tap either image to start. Look closely at the eyes...</p>
+  <p>Look closely at the eyes... Can you spot all 5?</p>
   
   <div class="game-container">
-    <img class="game-img" id="img1" src="351-500x400.jpg">
-    <img class="game-img" id="img2" src="351-500x400.jpg">
+    <video class="game-img" id="img1" src="351-500x400.jpg" muted></video>
+    <video class="game-img" id="img2" src="351-500x400.jpg" muted></video>
   </div>
   
   <p class="credit">Created by Hadi 💀</p>
-  
-  <audio id="scream" src="https://www.myinstants.com/media/sounds/female-scream.mp3"></audio>
-  
-  <div id="jumpscare" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:black; z-index:999;">
-    <img src="ghost.jpg" style="width:100%; height:100%; object-fit:cover;">
-  </div>
 
   <script>
-    function startScare() {
-      document.getElementById('scream').play().then(() => {
-        document.getElementById('scream').pause();
-        document.getElementById('scream').currentTime = 0;
-      });
+    window.addEventListener('load', function() {
+      let video1 = document.getElementById('img1');
+      let video2 = document.getElementById('img2');
+      
+      // 5 sec kazhinju nee thanna ghost video varum
       setTimeout(() => {
-        document.getElementById('jumpscare').style.display = 'block';
-        document.getElementById('scream').play();
-      }, 3000);
-    }
-    
-    document.getElementById('img1').addEventListener('click', startScare);
-    document.getElementById('img2').addEventListener('click', startScare);
+        video1.src = "jumpscare.mp4";
+        video2.src = "jumpscare.mp4";
+        video1.loop = true;
+        video2.loop = true;
+        video1.play();
+        video2.play();
+      }, 5000);
+    });
   </script>
 </body>
 </html>
