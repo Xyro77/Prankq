@@ -6,14 +6,14 @@
   <style>
     .game-container {
       display: flex;
-      gap: 10px;
+      gap: 8px;
       justify-content: center;
       flex-wrap: wrap;
       margin-bottom: 15px;
     }
     .game-img {
-      width: 45%;
-      max-width: 300px;
+      width: 48%;
+      max-width: 450px;
       cursor: pointer;
       border: 2px solid #333;
     }
@@ -24,7 +24,7 @@
     }
   </style>
 </head>
-<body style="margin:0; background:#111; text-align:center; color:white; font-family:sans-serif; padding:20px;">
+<body style="margin:0; background:#111; text-align:center; color:white; font-family:sans-serif; padding:20px 10px;">
   <h2>Level 1: Find 5 differences</h2>
   <p>Tap either image to start. Look closely at the eyes...</p>
   
@@ -50,7 +50,7 @@
       setTimeout(() => {
         document.getElementById('jumpscare').style.display = 'block';
         document.getElementById('scream').play();
-      }, 5000);
+      }, 3000);
     }
     
     document.getElementById('img1').addEventListener('click', startScare);
