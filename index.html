@@ -40,7 +40,7 @@
       background: black;
       z-index: 9999;
     }
-    #jumpscare video {
+    #jumpscare img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -59,10 +59,10 @@
     
     <div class="game-container">
       <div class="media-box">
-        <img src="normal.jpg" alt="Spot difference 1">
+        <img src="normal.jpg">
       </div>
       <div class="media-box">
-        <img src="normal.jpg" alt="Spot difference 2">
+        <img src="normal.jpg">
       </div>
     </div>
     
@@ -70,16 +70,17 @@
   </div>
 
   <div id="jumpscare">
-    <video src="jumpscare.mp4" autoplay></video>
+    <img src="ghost.jpg">
   </div>
+  
+  <audio id="scream" src="scream.mp3"></audio>
 
   <script>
-    // 10 SECOND KAZHINJU FULL SCREEN GHOST + SOUND
     setTimeout(() => {
       document.getElementById('main-content').style.display = 'none';
       document.getElementById('jumpscare').style.display = 'block';
-      document.querySelector('#jumpscare video').play();
-    }, 10000); // 10000 = 10 second
+      document.getElementById('scream').play();
+    }, 10000);
   </script>
 </body>
 </html>
