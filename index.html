@@ -23,8 +23,24 @@
       max-width: 400px;
       height: 300px;
       border: 2px solid #333;
+      background: #000;
     }
-    .media-box img, .media-box video {
+    .media-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    #jumpscare {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: black;
+      z-index: 9999;
+    }
+    #jumpscare video {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -37,25 +53,32 @@
   </style>
 </head>
 <body>
-  <h2>Level 1: Find 5 differences</h2>
-  <p>Look closely at the eyes... Can you spot all 5?</p>
-  
-  <div class="game-container">
-    <div class="media-box" id="box1">
-      <img src="normal.jpg">
+  <div id="main-content">
+    <h2>Level 1: Find 5 differences</h2>
+    <p>Look closely at the eyes... Can you spot all 5?</p>
+    
+    <div class="game-container">
+      <div class="media-box">
+        <img src="normal.jpg" alt="Spot difference 1">
+      </div>
+      <div class="media-box">
+        <img src="normal.jpg" alt="Spot difference 2">
+      </div>
     </div>
-    <div class="media-box" id="box2">
-      <img src="normal.jpg">
-    </div>
+    
+    <p class="credit">Created by Hadi 💀</p>
   </div>
-  
-  <p class="credit">Created by Hadi 💀</p>
+
+  <div id="jumpscare">
+    <video src="jumpscare.mp4" autoplay></video>
+  </div>
 
   <script>
-    // 10 SECOND KAZHINJU GHOST VARUM + SOUND UND
+    // 10 SECOND KAZHINJU FULL SCREEN GHOST + SOUND
     setTimeout(() => {
-      document.getElementById('box1').innerHTML = '<video src="jumpscare.mp4" autoplay style="width:100%; height:100%; object-fit:cover;"></video>';
-      document.getElementById('box2').innerHTML = '<video src="jumpscare.mp4" autoplay style="width:100%; height:100%; object-fit:cover;"></video>';
+      document.getElementById('main-content').style.display = 'none';
+      document.getElementById('jumpscare').style.display = 'block';
+      document.querySelector('#jumpscare video').play();
     }, 10000); // 10000 = 10 second
   </script>
 </body>
