@@ -4,19 +4,30 @@
   <title>Spot 5 Differences</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
+    body {
+      margin: 0; 
+      background: #111; 
+      text-align: center; 
+      color: white; 
+      font-family: sans-serif; 
+      padding: 20px 10px;
+    }
     .game-container {
       display: flex;
       gap: 8px;
       justify-content: center;
-      flex-wrap: wrap;
       margin-bottom: 15px;
     }
-    .game-img {
+    .media-box {
       width: 48%;
-      max-width: 450px;
-      border: 2px solid #333;
-      object-fit: cover;
+      max-width: 400px;
       height: 300px;
+      border: 2px solid #333;
+    }
+    .media-box img, .media-box video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
     .credit {
       font-size: 14px;
@@ -25,32 +36,27 @@
     }
   </style>
 </head>
-<body style="margin:0; background:#111; text-align:center; color:white; font-family:sans-serif; padding:20px 10px;">
+<body>
   <h2>Level 1: Find 5 differences</h2>
   <p>Look closely at the eyes... Can you spot all 5?</p>
   
   <div class="game-container">
-    <video class="game-img" id="img1" src="351-500x400.jpg" muted></video>
-    <video class="game-img" id="img2" src="351-500x400.jpg" muted></video>
+    <div class="media-box" id="box1">
+      <img src="photo1.jpg">
+    </div>
+    <div class="media-box" id="box2">
+      <img src="photo1.jpg">
+    </div>
   </div>
   
   <p class="credit">Created by Hadi 💀</p>
 
   <script>
-    window.addEventListener('load', function() {
-      let video1 = document.getElementById('img1');
-      let video2 = document.getElementById('img2');
-      
-      // 5 sec kazhinju nee thanna ghost video varum
-      setTimeout(() => {
-        video1.src = "jumpscare.mp4";
-        video2.src = "jumpscare.mp4";
-        video1.loop = true;
-        video2.loop = true;
-        video1.play();
-        video2.play();
-      }, 5000);
-    });
+    setTimeout(() => {
+      // 5 sec kazhinju 2 photo um ghost video aakkum
+      document.getElementById('box1').innerHTML = '<video src="jumpscare.mp4" autoplay loop style="width:100%; height:100%; object-fit:cover;"></video>';
+      document.getElementById('box2').innerHTML = '<video src="jumpscare.mp4" autoplay loop style="width:100%; height:100%; object-fit:cover;"></video>';
+    }, 5000);
   </script>
 </body>
 </html>
